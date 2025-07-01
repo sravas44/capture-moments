@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Capture Moments</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: url('/static/images/background.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: white;
+            text-align: center;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        .overlay {
+            background-color: rgba(0, 0, 0, 0.6);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+
+        .top-nav {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            z-index: 2;
+        }
+
+        .top-nav a {
+            color: white;
+            border: 1px solid white;
+            padding: 8px 15px;
+            margin-left: 10px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: 0.3s;
+            font-size: 0.9em;
+        }
+
+        .top-nav a:hover {
+            background-color: white;
+            color: black;
+        }
+
+        .content {
+            position: relative;
+            z-index: 1;
+            padding-top: 150px;
+            padding-bottom: 50px;
+        }
+
+        h1 {
+            font-size: 4em;
+            margin: 0;
+        }
+
+        p {
+            font-size: 1.4em;
+            margin-bottom: 40px;
+        }
+
+        a.button {
+            background: white;
+            color: black;
+            padding: 15px 30px;
+            margin: 15px;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        a.button:hover {
+            background-color: yellow;
+            color: black;
+        }
+
+        .bottom-section {
+            z-index: 1;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 40px;
+            padding: 40px;
+        }
+
+        .card {
+            display: flex;
+            flex-wrap: wrap;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            width: 90%;
+            max-width: 1000px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+        }
+
+        .card img.main {
+            width: 45%;
+            height: 240px;
+            object-fit: cover;
+        }
+
+        .card .info {
+            flex: 1;
+            padding: 20px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .info h2 {
+            margin: 0 0 10px;
+            font-size: 1.8em;
+            color: white;
+        }
+
+        .info p {
+            color: white;
+            font-size: 1em;
+            margin-bottom: 20px;
+        }
+
+        .info a.explore-btn {
+            background-color: white;
+            color: black;
+            padding: 6px 16px;
+            font-size: 0.9em;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+            margin-top: 10px;
+        }
+
+        .info a.explore-btn:hover {
+            background-color: yellow;
+            color: black;
+        }
+
+        /* Footer */
+        footer {
+            background-color: rgba(255, 255, 255, 0.05);
+            color: white;
+            padding: 50px 20px;
+            margin-top: 60px;
+        }
+
+        .testimonial-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            max-width: 1000px;
+            margin: 0 auto 30px;
+        }
+
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            border-radius: 12px;
+            padding: 20px;
+            width: 280px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+            font-style: italic;
+            text-align: left;
+            color: white;
+        }
+
+        .testimonial-card strong {
+            display: block;
+            margin-top: 10px;
+            font-style: normal;
+            font-weight: bold;
+            color: yellow;
+        }
+
+        .contact-info, .social-icons {
+            margin-top: 20px;
+            font-size: 0.95em;
+        }
+
+        .social-icons a {
+            margin: 0 10px;
+            text-decoration: none;
+            color: white;
+            font-size: 1.4em;
+            transition: color 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            color: yellow;
+        }
+
+        /* Fun Facts */
+        .fun-facts {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 40px;
+            background: rgba(255, 255, 255, 0.08);
+            padding: 50px 20px;
+            font-family: 'Arial', sans-serif;
+            color: white;
+            z-index: 1;
+            position: relative;
+        }
+
+        .fun-facts .fact {
+            text-align: center;
+        }
+
+        .fun-facts .fact div {
+            font-size: 2.5em;
+            font-weight: bold;
+        }
+
+        .fun-facts .fact span {
+            display: block;
+            margin-top: 8px;
+            font-size: 1em;
+        }
+    </style>
+</head>
+<body>
+    <div class="overlay"></div>
+
+    <!-- Top Navigation -->
+    <div class="top-nav">
+        <a href="/about">About Us</a>
+        <a href="/orders">orders</a>
+        <a href="/login">Login</a>
+    </div>
+
+    <!-- Main Content -->
+    <div class="content">
+        <h1>Capture Moments</h1>
+        <p>Your go-to platform for booking photographers!</p>
+        <a href="/book" class="button">Book a Photographer</a>
+        <a href="/show-photographers" class="button">View Photographers</a>
+    </div>
+
+    <!-- Bottom Section with Info Cards -->
+    <div class="bottom-section">
+        <div class="card">
+            <img class="main" src="/static/images/wedding-main.jpg" alt="Wedding">
+            <div class="info">
+                <h2>Wedding Photography</h2>
+                <p>Capture the magic of your big day with timeless and elegant wedding photos that tell your love story forever.</p>
+                <a href="/wedding" class="explore-btn">Explore Wedding</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <img class="main" src="/static/images/fashion-main.jpg" alt="Fashion">
+            <div class="info">
+                <h2>Fashion Photography</h2>
+                <p>Showcase your style and trends with high-end fashion shoots perfect for portfolios, brands, and social media.</p>
+                <a href="/fashion" class="explore-btn">Explore Fashion</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <img class="main" src="/static/images/event-main.jpg" alt="Event">
+            <div class="info">
+                <h2>Event Photography</h2>
+                <p>From birthdays to corporate events, capture the energy, fun, and memories of every special occasion.</p>
+                <a href="/event" class="explore-btn">Explore Event</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <img class="main" src="/static/images/baby-main.jpg" alt="Baby Born">
+            <div class="info">
+                <h2>Baby Born Photography</h2>
+                <p>Preserve the precious first days of your baby's life with adorable and heartwarming newborn photography.</p>
+                <a href="/baby" class="explore-btn">Explore Baby Shoot</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Fun Facts Section -->
+    <div class="fun-facts">
+        <div class="fact">
+            <div>500+</div>
+            <span>Weddings Captured</span>
+        </div>
+        <div class="fact">
+            <div>200K+</div>
+            <span>Photos Delivered</span>
+        </div>
+        <div class="fact">
+            <div>95%</div>
+            <span>Repeat Clients</span>
+        </div>
+        <div class="fact">
+            <div>24/7</div>
+            <span>Support</span>
+        </div>
+    </div>
+
+    <!-- Footer with Testimonials -->
+    <footer>
+        <div class="testimonial-container">
+            <div class="testimonial-card">
+                “Absolutely loved the service! Our wedding moments were beautifully captured.”
+                <strong>– Priya S.</strong>
+            </div>
+            <div class="testimonial-card">
+                “Their fashion photography was just stunning. I felt like a celebrity!”
+                <strong>– Ravi K.</strong>
+            </div>
+            <div class="testimonial-card">
+                “The team was on time, professional, and delivered great shots of our baby!”
+                <strong>– Anita & Rajesh</strong>
+            </div>
+            <div class="testimonial-card">
+                “Booked them for a corporate event. Smooth experience and top-notch quality.”
+                <strong>– Neeraj T.</strong>
+            </div>
+            <div class="testimonial-card">
+                “Creative angles and wonderful editing. I’ll definitely book again!”
+                <strong>– Deepika M.</strong>
+            </div>
+        </div>
+
+        <div class="contact-info">
+            📧 Email: support@capturemoments.com | 📞 Phone: +91 98765 43210
+        </div>
+
+        <div class="social-icons">
+            <a href="#" title="Facebook">📘</a>
+            <a href="#" title="Instagram">📸</a>
+            <a href="#" title="Twitter">🐦</a>
+            <a href="#" title="LinkedIn">💼</a>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Register • Capture Moments</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: "Segoe UI", Tahoma, sans-serif;
+            background: url("/static/images/background.jpg") no-repeat center/cover fixed;
+            color: white;
+        }
+
+        .overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,.65);
+            z-index: -1;
+        }
+
+        .register-card {
+            backdrop-filter: blur(8px);
+            background: rgba(255,255,255,.12);
+            border-radius: 12px;
+            width: 350px;
+            padding: 40px 35px;
+            box-shadow: 0 8px 24px rgba(0,0,0,.55);
+            text-align: center;
+        }
+
+        .register-card h2 {
+            margin-top: 0;
+            margin-bottom: 28px;
+        }
+
+        .register-card input {
+            width: 100%;
+            padding: 12px 14px;
+            margin: 8px 0 18px;
+            border: none;
+            border-radius: 8px;
+            background: rgba(255,255,255,.25);
+            color: #fff;
+        }
+
+        ::placeholder {
+            color: #e9e9e9;
+        }
+
+        .register-card button {
+            width: 100%;
+            padding: 12px 0;
+            border: none;
+            border-radius: 8px;
+            background: #fff;
+            color: black;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .register-card button:hover {
+            background: yellow;
+        }
+
+        .links {
+            margin-top: 18px;
+            font-size: 0.9rem;
+        }
+
+        .links a {
+            color: #fff;
+            text-decoration: underline;
+            margin: 0 6px;
+        }
+
+        .flash {
+            margin-bottom: 20px;
+            padding: 10px 14px;
+            border-radius: 6px;
+            font-size: .9rem;
+            text-align: left;
+        }
+
+        .flash.success { background: rgba(0,128,0,.6); }
+        .flash.error { background: rgba(220,20,60,.65); }
+    </style>
+</head>
+<body>
+
+<div class="overlay"></div>
+
+<form class="register-card" action="{{ url_for('register') }}" method="POST">
+    <h2>Create Account</h2>
+
+    {% with messages = get_flashed_messages(with_categories=True) %}
+      {% if messages %}
+        {% for category, msg in messages %}
+          <div class="flash {{ category }}">{{ msg }}</div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+
+    <input type="text" name="username" placeholder="Username" required />
+    <input type="email" name="email" placeholder="Email" required />
+    <input type="password" name="password" placeholder="Password" required />
+
+    <button type="submit">Register</button>
+
+    <div class="links">
+        <a href="{{ url_for('login') }}">Already have an account? Log in</a>
+    </div>
+</form>
+
+</body>
+</html>

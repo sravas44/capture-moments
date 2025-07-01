@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Event Photography • Capture Moments</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Open+Sans&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #b8860b;
+      --accent: #ffe8b8;
+      --muted: #777;
+      --light-bg: #fffef5;
+      --deep-shadow: 0 8px 30px rgba(0,0,0,0.12);
+      --soft-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background: var(--light-bg);
+      color: #333;
+      line-height: 1.6;
+    }
+
+    header {
+      background: var(--primary);
+      color: white;
+      padding: 20px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      box-shadow: var(--deep-shadow);
+    }
+
+    header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8em;
+    }
+
+    nav a {
+      color: white;
+      margin-left: 20px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+      color: #ffefc2;
+    }
+
+    .hero {
+      background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url("/static/images/events.jpg") center/cover no-repeat;
+      height: 70vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: white;
+    }
+
+    .hero-text h2 {
+      font-size: 3.5em;
+      font-family: 'Playfair Display', serif;
+    }
+
+    .hero-text p {
+      font-size: 1.3em;
+      margin-top: 10px;
+    }
+
+    .content {
+      padding: 60px 20px;
+      max-width: 1100px;
+      margin: auto;
+      text-align: center;
+    }
+
+    .content h3 {
+      font-size: 2.5em;
+      color: var(--primary);
+      margin-bottom: 20px;
+      font-family: 'Playfair Display', serif;
+    }
+
+    .content > p {
+      font-size: 1.1em;
+      color: var(--muted);
+      margin-bottom: 40px;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: var(--soft-shadow);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--deep-shadow);
+    }
+
+    .card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+    }
+
+    .card-content {
+      padding: 20px;
+    }
+
+    .card-content h4 {
+      color: var(--primary);
+      font-size: 1.3em;
+      margin-bottom: 10px;
+    }
+
+    .card-content p {
+      font-size: 0.95em;
+      color: var(--muted);
+    }
+
+    .why-choose-us {
+      padding: 60px 20px;
+      background: #fff;
+      margin-top: 70px;
+      border-radius: 14px;
+      box-shadow: var(--soft-shadow);
+      text-align: center;
+    }
+
+    .why-choose-us h3 {
+      font-size: 2.4em;
+      color: var(--primary);
+      margin-bottom: 30px;
+      font-family: 'Playfair Display', serif;
+    }
+
+    .features-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 40px;
+    }
+
+    .feature-circle {
+      background: var(--accent);
+      color: var(--primary);
+      width: 140px;
+      height: 140px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      border-radius: 50%;
+      font-weight: bold;
+      padding: 20px;
+      font-size: 1em;
+      box-shadow: var(--soft-shadow);
+      transition: transform 0.3s;
+    }
+
+    .feature-circle:hover {
+      transform: scale(1.05);
+    }
+
+    .fact-slider {
+      max-width: 800px;
+      margin: 80px auto 40px;
+      background: #fff8e5;
+      border-radius: 12px;
+      padding: 30px;
+      text-align: center;
+      position: relative;
+      box-shadow: var(--soft-shadow);
+    }
+
+    .fact-text {
+      font-size: 1.3em;
+      color: var(--primary);
+      min-height: 60px;
+    }
+
+    .fact-controls {
+      margin-top: 20px;
+    }
+
+    .fact-controls button {
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      margin: 0 10px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .fact-controls button:hover {
+      background: #a07500;
+    }
+
+    .back-home {
+      text-align: center;
+      margin: 60px 0 30px;
+    }
+
+    .back-home a {
+      background: var(--primary);
+      color: white;
+      padding: 12px 28px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+
+    .back-home a:hover {
+      background: #a07500;
+    }
+
+    footer {
+      background: #333;
+      color: #eee;
+      padding: 40px 20px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Capture Moments</h1>
+    <nav>
+      <a href="{{ url_for('home') }}">Home</a>
+      <a href="{{ url_for('book') }}">Book Now</a>
+      <a href="{{ url_for('logout') }}">Logout</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-text">
+      <h2>Event Photography</h2>
+      <p>Capturing the energy, joy, and emotions of every occasion</p>
+    </div>
+  </section>
+
+  <section class="content">
+    <h3>Memories in the Making</h3>
+    <p>We bring your events to life through stunning visuals. Whether it's a vibrant birthday party, a formal corporate meet, or a lively school event — we capture every moment with care and clarity.</p>
+
+    <div class="gallery">
+      <div class="card">
+        <img src="/static/images/event1.jpg" alt="Birthday">
+        <div class="card-content">
+          <h4>Birthday Bash</h4>
+          <p>Joyful, colorful and filled with surprise captures — perfect memories!</p>
+        </div>
+      </div>
+      <div class="card">
+        <img src="/static/images/event2.jpg" alt="Corporate Event">
+        <div class="card-content">
+          <h4>Corporate Events</h4>
+          <p>Professional documentation of conferences, launches, and networking moments.</p>
+        </div>
+      </div>
+      <div class="card">
+        <img src="/static/images/event3.jpg" alt="School Function">
+        <div class="card-content">
+          <h4>School Functions</h4>
+          <p>From performances to prize ceremonies — we cover it with a creative lens.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="why-choose-us">
+    <h3>Why Choose Us</h3>
+    <div class="features-row">
+      <div class="feature-circle">📸<br>Skilled<br>Photographers</div>
+      <div class="feature-circle">✨<br>Candid<br>Excellence</div>
+      <div class="feature-circle">🎯<br>Flexible<br>Packages</div>
+      <div class="feature-circle">⏱️<br>Quick<br>Turnaround</div>
+    </div>
+  </section>
+
+  <div class="fact-slider">
+    <div class="fact-text" id="factText">Loading fact...</div>
+    <div class="fact-controls">
+      <button onclick="prevFact()">⟵ Previous</button>
+      <button onclick="nextFact()">Next ⟶</button>
+    </div>
+  </div>
+
+  <div class="back-home">
+    <a href="{{ url_for('home') }}">← Back to Home</a>
+  </div>
+
+  <footer>
+    &copy; 2025 Capture Moments — Every Event, A Beautiful Memory.
+  </footer>
+
+  <script>
+    const facts = [
+      "We’ve covered over 500+ successful events.",
+      "Clients love our 24-hour sneak peek gallery.",
+      "Every photo is hand-edited for perfection.",
+      "We travel to events across the country.",
+      "Trusted by over 100 schools and corporates."
+    ];
+    let currentFact = 0;
+
+    function updateFact() {
+      document.getElementById('factText').textContent = facts[currentFact];
+    }
+
+    function nextFact() {
+      currentFact = (currentFact + 1) % facts.length;
+      updateFact();
+    }
+
+    function prevFact() {
+      currentFact = (currentFact - 1 + facts.length) % facts.length;
+      updateFact();
+    }
+
+    window.onload = updateFact;
+  </script>
+</body>
+</html>

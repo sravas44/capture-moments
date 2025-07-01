@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Login • Capture Moments</title>
+
+    <style>
+        /* ----------  BASIC LAYOUT ---------- */
+        body{
+            margin:0;
+            height:100vh;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            font-family: "Segoe UI", Tahoma, sans-serif;
+            color:#fff;
+            background:url("/static/images/background.jpg") no-repeat center/cover fixed;
+        }
+        .overlay{
+            position:fixed;
+            inset:0;
+            background:rgba(0,0,0,.65);
+            z-index:-1;
+        }
+
+        /* ----------  LOGIN CARD ---------- */
+        .login-card{
+            backdrop-filter:blur(8px);
+            background:rgba(255,255,255,.12);
+            border-radius:12px;
+            width:320px;
+            padding:40px 35px 35px;
+            box-shadow:0 8px 24px rgba(0,0,0,.55);
+            text-align:center;
+        }
+        .login-card h2{
+            margin-top:0;
+            margin-bottom:28px;
+            font-size:1.8rem;
+            font-weight:600;
+        }
+
+        /* ----------  FORM FIELDS ---------- */
+        .login-card input{
+            width:100%;
+            padding:12px 14px;
+            margin:8px 0 18px;
+            border:none;
+            border-radius:8px;
+            font-size:1rem;
+            background:rgba(255,255,255,.25);
+            color:#fff;
+        }
+        ::placeholder{color:#e9e9e9}
+
+        /* ----------  SUBMIT BUTTON ---------- */
+        .login-card button{
+            width:100%;
+            padding:12px 0;
+            border:none;
+            border-radius:8px;
+            font-weight:600;
+            font-size:1rem;
+            background:#fff;
+            color:#000;
+            cursor:pointer;
+            transition:.25s;
+        }
+        .login-card button:hover{background:yellow;}
+
+        /* ----------  LINKS ---------- */
+        .login-card .links{
+            margin-top:18px;
+            font-size:.9rem;
+        }
+        .login-card .links a{
+            color:#fff;
+            text-decoration:underline;
+            margin:0 6px;
+        }
+
+        /* ----------  FLASH MESSAGES ---------- */
+        .flash{
+            margin-bottom:20px;
+            padding:10px 14px;
+            border-radius:6px;
+            font-size:.9rem;
+            text-align:left;
+        }
+        .flash.success{background:rgba(0,128,0,.6);}
+        .flash.error{background:rgba(220,20,60,.65);}
+    </style>
+</head>
+<body>
+
+    <div class="overlay"></div>
+
+    <!-- Login form -->
+    <form class="login-card" action="{{ url_for('login') }}" method="POST">
+        <h2>Sign In</h2>
+
+        <!-- Flash messages -->
+        {% with messages = get_flashed_messages(with_categories=True) %}
+          {% if messages %}
+            {% for category, msg in messages %}
+              <div class="flash {{ category }}">{{ msg }}</div>
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+
+        <input type="text" name="username" placeholder="Username or Email" required />
+        <input type="password" name="password" placeholder="Password" required />
+
+        <button type="submit">Log In</button>
+
+        <div class="links">
+            <a href="{{ url_for('register') }}">Sign Up</a> |
+            <a href="{{ url_for('home') }}">Forgot Password?</a>
+        </div>
+    </form>
+
+</body>
+</html>

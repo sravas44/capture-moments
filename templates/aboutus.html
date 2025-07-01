@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>About Us</title>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background: #f4f6f9;
+      color: #2c3e50;
+    }
+
+    /* NAVBAR SPACER ONLY (NO MENU/PROFILE) */
+    .navbar {
+      height: 60px;
+      background: transparent;
+    }
+
+    .hero {
+      height: 60vh;
+      background: url('/static/images/about-hero.jpg') center/cover no-repeat;
+      position: relative;
+      margin-top: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.55);
+    }
+
+    .hero-text {
+      position: relative;
+      text-align: center;
+      color: #fff;
+      padding: 0 20px;
+    }
+
+    .hero-text h1 { font-size: 3em; margin-bottom: 15px; }
+    .hero-text p { font-size: 1.2em; max-width: 700px; margin: auto; }
+
+    section {
+      max-width: 1000px;
+      margin: 60px auto;
+      padding: 0 20px;
+    }
+
+    section h2 { font-size: 2em; margin-bottom: 15px; color: #34495e; }
+    section p { line-height: 1.7; font-size: 1.05em; margin-bottom: 12px; color: #555; }
+
+    .values {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 25px;
+      margin-top: 30px;
+    }
+
+    .value-card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 25px;
+      text-align: center;
+      box-shadow: 0 6px 18px rgba(0,0,0,.06);
+      transition: transform .25s;
+    }
+
+    .value-card:hover { transform: translateY(-6px); }
+    .value-card span {
+      font-size: 2.5em;
+      display: block;
+      margin-bottom: 10px;
+      color: #27ae60;
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 30px;
+      margin-top: 30px;
+    }
+
+    .member {
+      background: #fff;
+      border-radius: 12px;
+      overflow: hidden;
+      text-align: center;
+      box-shadow: 0 6px 18px rgba(0,0,0,.06);
+    }
+
+    .member img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .member h3 { margin: 12px 0 4px; }
+    .member p { font-size: 0.9em; color: #777; margin-bottom: 14px; }
+
+    .timeline {
+      border-left: 3px solid #27ae60;
+      padding-left: 25px;
+      margin-top: 30px;
+    }
+
+    .milestone {
+      margin-bottom: 20px;
+      position: relative;
+    }
+
+    .milestone::before {
+      content: '';
+      position: absolute;
+      left: -11px;
+      top: 4px;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: #27ae60;
+    }
+
+    .milestone h4 {
+      margin: 0 0 6px;
+      font-size: 1.1em;
+      color: #2c3e50;
+    }
+
+    .milestone p {
+      font-size: 0.95em;
+      color: #555;
+      margin: 0;
+    }
+
+    .cta {
+      background: #27ae60;
+      color: #fff;
+      text-align: center;
+      padding: 40px 20px;
+      border-radius: 12px;
+      margin-top: 50px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    }
+
+    .cta h3 { font-size: 2em; margin-bottom: 10px; }
+    .cta a {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 12px 30px;
+      background: #fff;
+      color: #27ae60;
+      font-weight: 700;
+      border-radius: 6px;
+      transition: background .3s;
+      text-decoration: none;
+    }
+
+    .cta a:hover { background: #e9e9e9; }
+
+    footer {
+      background: #20232a;
+      color: #bbb;
+      text-align: center;
+      padding: 40px 20px;
+      margin-top: 80px;
+    }
+
+    footer p { margin: 5px 0; font-size: 0.9em; }
+    footer a { color: #27ae60; }
+
+    @media (max-width: 600px) {
+      .hero-text h1 { font-size: 2.25em; }
+      .hero-text p { font-size: 1em; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar Spacer (no content) -->
+  <div class="navbar"></div>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero-text">
+      <h1>Who We Are</h1>
+      <p>Capturing life’s most cherished moments through the art of photography — one click at a time.</p>
+    </div>
+  </header>
+
+  <!-- ABOUT SECTION -->
+  <section>
+    <h2>About Capture Moments</h2>
+    <p>Founded in 2015, Capture Moments began as a small collective of passionate photographers determined
+       to bring world-class imagery to every client, whether an intimate family shoot or a grand destination wedding.</p>
+    <p>Today, our network spans over <strong>200+ vetted professionals</strong> across India, delivering
+       stunning visuals for weddings, corporate events, fashion brands, newborn sessions, and more.</p>
+  </section>
+
+  <!-- MISSION & VALUES -->
+  <section>
+    <h2>Our Mission &amp; Core Values</h2>
+    <p>We believe memorable photography should be <em>accessible, authentic,</em> and <em>emotionally resonant</em>.
+       Everything we do is rooted in these values.</p>
+
+    <div class="values">
+      <div class="value-card"><span>🎯</span><strong>Client-First</strong><br>Every project begins by understanding your story.</div>
+      <div class="value-card"><span>🕒</span><strong>Punctual</strong><br>Timely delivery and transparent communication.</div>
+      <div class="value-card"><span>💡</span><strong>Creative</strong><br>Fresh concepts, bold angles, and artistic flair.</div>
+      <div class="value-card"><span>🤝</span><strong>Integrity</strong><br>Fair pricing and honest business practices.</div>
+    </div>
+  </section>
+
+  <!-- TEAM -->
+  <section>
+    <h2>Meet the Leadership Team</h2>
+    <div class="team-grid">
+      <div class="member">
+        <img src="/static/images/ceo.jpg" alt="Priya Sharma">
+        <h3>Priya Sharma</h3>
+        <p>Founder & CEO</p>
+      </div>
+      <div class="member">
+        <img src="/static/images/cto.jpg" alt="Rahul Verma">
+        <h3>Rahul Verma</h3>
+        <p>CTO & Product Lead</p>
+      </div>
+      <div class="member">
+        <img src="/static/images/ops.jpg" alt="Anita Rao">
+        <h3>Anita Rao</h3>
+        <p>Head of Operations</p>
+      </div>
+      <div class="member">
+        <img src="/static/images/creative.jpg" alt="Karan Mehta">
+        <h3>Karan Mehta</h3>
+        <p>Creative Director</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- MILESTONES -->
+  <section>
+    <h2>Milestones</h2>
+    <div class="timeline">
+      <div class="milestone">
+        <h4>2015 • Capture Moments launched</h4>
+        <p>Started with a 3-person crew in Hyderabad.</p>
+      </div>
+      <div class="milestone">
+        <h4>2018 • 1,000+ weddings shot</h4>
+        <p>Expanded to five major cities with 50 photographers.</p>
+      </div>
+      <div class="milestone">
+        <h4>2021 • Mobile booking app released</h4>
+        <p>Real-time availability & instant quotes at your fingertips.</p>
+      </div>
+      <div class="milestone">
+        <h4>2024 • National award</h4>
+        <p>Won “Best Photography Startup” at India Creative Summit.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CALL TO ACTION -->
+  <section class="cta">
+    <h3>Ready to Capture Your Next Moment?</h3>
+    <p>Whether it’s your wedding day, a brand campaign, or a candid family shoot,
+       our lens is ready to tell your story.</p>
+    <a href="/book">Book a Photographer →</a>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>&copy; 2015-2025 Capture Moments • All Rights Reserved</p>
+    <p>Email: <a href="mailto:support@capturemoments.com">support@capturemoments.com</a> |
+       Phone: +91 98765 43210</p>
+    <p>Follow us on
+      <a href="#">Instagram</a> •
+      <a href="#">Facebook</a> •
+      <a href="#">Twitter</a> •
+      <a href="#">LinkedIn</a>
+    </p>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Our Professional Photographers</title>
+  <style>
+    body {
+      background-color: #f7f7f7;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 50px;
+    }
+
+    h2 {
+      color: #2c3e50;
+      margin-bottom: 30px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .card {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+      transition: transform 0.2s;
+    }
+
+    .card:hover {
+      transform: scale(1.02);
+    }
+
+    .card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 15px;
+    }
+
+    h3 {
+      margin: 10px 0 5px;
+      color: #2c3e50;
+    }
+
+    p {
+      color: #555;
+      font-size: 14px;
+      margin: 5px 0;
+    }
+
+    .rating {
+      color: #f39c12;
+      font-weight: bold;
+    }
+
+    .btn {
+      margin-top: 15px;
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #27ae60;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+
+    .btn:hover {
+      background-color: #1e8449;
+    }
+
+    a.back {
+      display: inline-block;
+      margin-top: 40px;
+      text-decoration: none;
+      background: #3498db;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 5px;
+    }
+
+    a.back:hover {
+      background: #2980b9;
+    }
+  </style>
+</head>
+<body>
+  <h2>Our Professional Photographers</h2>
+
+  <div class="grid">
+    {% for p in photographers %}
+      <div class="card">
+        <img src="{{ url_for('static', filename='images/' + p.image) }}" alt="{{ p.name }}">
+        <h3>{{ p.name }}</h3>
+        <p><strong>ID:</strong> {{ p.id }}</p>
+        <p><strong>Skills:</strong> {{ p.skills | join(', ') }}</p>
+        <p><strong>Location:</strong> {{ p.location }}</p>
+        <p><strong>Experience:</strong> {{ p.experience }} years</p>
+        <p><strong>Price per shoot:</strong> {{ p.price }}</p>
+        <p><strong>Rating:</strong> <span class="rating">⭐ {{ p.rating }}</span></p>
+        <p><strong>Availability:</strong> {{ availability_data[p.id] | join(', ') }}</p>
+        <a href="{{ url_for('book') }}" class="btn">Book Now</a>
+      </div>
+    {% endfor %}
+  </div>
+
+  <a class="back" href="/">← Back to Home</a>
+</body>
+</html>
